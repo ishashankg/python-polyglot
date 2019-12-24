@@ -1,6 +1,6 @@
 import flask
 from flask import request
-from utils import checkPrime
+from utils import check_prime
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -11,7 +11,7 @@ app.config["DEBUG"] = True
 def prime():
     params = request.args
     number = params.get("number")
-    return checkPrime(number)
+    return check_prime(number)
 
 
 app.run()

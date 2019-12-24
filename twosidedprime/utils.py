@@ -1,17 +1,17 @@
-def checkPrime(number: int) -> str:
+def check_prime(number: int) -> str:
     if number.isnumeric():
         num = int(number)
     else:
         return "Please provide numeric value"
     isPrime = [True] * (num + 1)
-    _populatePrimeArray(num, isPrime)
-    if _rightTruncatablePrime(num, isPrime) and _leftTruncatablePrime(num, isPrime):
+    _populate_prime_array(num, isPrime)
+    if _right_truncatable_prime(num, isPrime) and _left_truncatable_prime(num, isPrime):
         return "{} {}".format(num, " is a two sided prime number")
     else:
         return "{} {}".format(num, " is NOT a two sided prime number")
 
 
-def _populatePrimeArray(n: int, isPrime: list):
+def _populate_prime_array(n: int, isPrime: list):
     isPrime[0] = isPrime[1] = False
     p = 2
     while p * p <= n:
@@ -23,7 +23,7 @@ def _populatePrimeArray(n: int, isPrime: list):
         p = p + 1
 
 
-def _rightTruncatablePrime(n: int, isPrime: list) -> bool:
+def _right_truncatable_prime(n: int, isPrime: list) -> bool:
     while n != 0:
         if isPrime[n]:
             n = n // 10
@@ -32,7 +32,7 @@ def _rightTruncatablePrime(n: int, isPrime: list) -> bool:
     return True
 
 
-def _leftTruncatablePrime(n: int, isPrime: list) -> bool:
+def _left_truncatable_prime(n: int, isPrime: list) -> bool:
     temp = n
     count = 0
     while temp != 0:
