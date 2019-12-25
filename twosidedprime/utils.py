@@ -3,36 +3,36 @@ def check_prime(number: int) -> str:
         num = int(number)
     else:
         return "Please provide numeric value"
-    isPrime = [True] * (num + 1)
-    _populate_prime_array(num, isPrime)
-    if _right_truncatable_prime(num, isPrime) and _left_truncatable_prime(num, isPrime):
+    is_prime = [True] * (num + 1)
+    _populate_prime_array(num, is_prime)
+    if _right_truncatable_prime(num, is_prime) and _left_truncatable_prime(num, is_prime):
         return "{} {}".format(num, " is a two sided prime number")
     else:
         return "{} {}".format(num, " is NOT a two sided prime number")
 
 
-def _populate_prime_array(n: int, isPrime: list):
-    isPrime[0] = isPrime[1] = False
+def _populate_prime_array(n: int, is_prime: list):
+    is_prime[0] = is_prime[1] = False
     p = 2
     while p * p <= n:
-        if isPrime[p]:
+        if is_prime[p]:
             i = p * 2
             while i <= n:
-                isPrime[i] = False
+                is_prime[i] = False
                 i = i + p
         p = p + 1
 
 
-def _right_truncatable_prime(n: int, isPrime: list) -> bool:
+def _right_truncatable_prime(n: int, is_prime: list) -> bool:
     while n != 0:
-        if isPrime[n]:
+        if is_prime[n]:
             n = n // 10
         else:
             return False
     return True
 
 
-def _left_truncatable_prime(n: int, isPrime: list) -> bool:
+def _left_truncatable_prime(n: int, is_prime: list) -> bool:
     temp = n
     count = 0
     while temp != 0:
@@ -44,7 +44,7 @@ def _left_truncatable_prime(n: int, isPrime: list) -> bool:
 
     for i in range(count, 0, -1):
         mod = _power(10, i)
-        if not isPrime[n % mod]:
+        if not is_prime[n % mod]:
             return False
 
     return True
